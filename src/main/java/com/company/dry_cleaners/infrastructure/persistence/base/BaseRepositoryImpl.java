@@ -1,5 +1,6 @@
 package com.company.dry_cleaners.infrastructure.persistence.base;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -40,5 +41,15 @@ public abstract class BaseRepositoryImpl<E, ID, J extends JpaRepository<E, ID>>
     @Override
     public void delete(E entity) {
         jpa.delete(entity);
+    }
+    
+    @Override
+    public long count() {
+        return jpa.count();
+    }
+
+    @Override
+    public List<E> saveAll(List<E> entities) {
+        return jpa.saveAll(entities);
     }
 }
